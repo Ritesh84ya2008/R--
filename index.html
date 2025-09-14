@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bacchon Ki Duniya</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { overflow-x: hidden; }
+  img { max-width: 100%; height: auto; }
+  .card:hover { transform: scale(1.05); transition: transform 0.3s; }
+</style>
+</head>
+<body class="bg-gradient-to-r from-yellow-100 to-blue-100 min-h-screen p-4">
+
+<!-- Header -->
+<header class="text-center mb-6">
+  <h1 class="text-3xl font-bold text-purple-700">🧒 बच्चों की दुनिया 🎉</h1>
+  <p class="text-md text-gray-700">मज़े से सीखो, खेलो और आगे बढ़ो!</p>
+</header>
+
+<!-- Maths Section -->
+<section class="bg-white rounded-xl shadow-lg p-4 mb-4">
+  <h2 class="text-xl font-semibold text-green-700 mb-2">🧠 गणित</h2>
+  <input id="num1" type="number" placeholder="पहला नंबर" class="border p-2 mr-2 rounded">
+  <input id="num2" type="number" placeholder="दूसरा नंबर" class="border p-2 mr-2 rounded">
+  <button onclick="calculate()" class="bg-blue-500 text-white px-4 py-2 rounded">जवाब दिखाओ</button>
+  <div id="mathResult" class="mt-3 text-lg text-purple-800 font-medium"></div>
+</section>
+
+<!-- Ginti Section -->
+<section class="bg-white rounded-xl shadow-lg p-4 mb-4">
+  <h2 class="text-xl font-semibold text-red-700 mb-2">🔢 गिनती</h2>
+  <input id="gintiLimit" type="number" placeholder="कहाँ तक?" class="border p-2 mr-2 rounded">
+  <button onclick="showGinti()" class="bg-green-500 text-white px-4 py-2 rounded">दिखाओ</button>
+  <div id="gintiOutput" class="mt-2 grid grid-cols-10 gap-2 text-center text-blue-700 font-bold"></div>
+</section>
+
+<!-- Table Section -->
+<section class="bg-white rounded-xl shadow-lg p-4 mb-4">
+  <h2 class="text-xl font-semibold text-blue-700 mb-2">📊 पहाड़ा</h2>
+  <input id="tableOf" type="number" placeholder="किसका टेबल?" class="border p-2 mr-2 rounded">
+  <button onclick="showTable()" class="bg-yellow-500 text-white px-4 py-2 rounded">दिखाओ</button>
+  <div id="tableOutput" class="mt-2 text-purple-800 font-medium"></div>
+</section>
+
+<!-- Akshar Section -->
+<section class="bg-white rounded-xl shadow-lg p-4 mb-4">
+  <h2 class="text-xl font-semibold text-pink-700 mb-2">🔤 अक्षर और चित्र</h2>
+  <input id="rangeFrom" placeholder="From (जैसे A या अ)" class="border p-2 mr-2 rounded">
+  <input id="rangeTo" placeholder="To (जैसे Z या ज्ञ)" class="border p-2 mr-2 rounded">
+  <button onclick="showCharacters()" class="bg-indigo-500 text-white px-4 py-2 rounded">दिखाओ</button>
+  <div id="charOutput" class="mt-2 grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 gap-4 text-lg font-bold text-center text-gray-800"></div>
+</section>
+
+<!-- Stories Section -->
+<section class="bg-white rounded-xl shadow-lg p-4 mb-8">
+  <h2 class="text-xl font-semibold text-orange-700 mb-2">📖 कहानियाँ</h2>
+  <div class="mb-3">
+    <h3 class="text-lg font-semibold text-green-800">🐇 खरगोश और कछुआ</h3>
+    <p class="text-gray-700">
+      जंगल में खरगोश ने कछुए को दौड़ की चुनौती दी। दौड़ शुरू होते ही खरगोश बहुत तेज़ भागा। 
+      बीच में आराम करने लगा, लेकिन कछुआ धीरे-धीरे चलता रहा और जीत गया। 
+      <strong>सीख:</strong> निरंतर मेहनत करने वाला हमेशा जीतता है।
+    </p>
+  </div>
+
+<div class="mb-3">
+    <h3 class="text-lg font-semibold text-green-800">🦁 शेर और चूहा</h3>
+    <p class="text-gray-700">
+      शेर सो रहा था। चूहा खेलते-खेलते उसके ऊपर चला गया। शेर गुस्से में पकड़ने लगा, लेकिन चूहे ने मदद का वादा किया। 
+      कुछ दिनों बाद शेर शिकारी के जाल में फँस गया। चूहे ने दांतों से जाल काटकर शेर को बचाया। 
+      <strong>सीख:</strong> हर किसी की मदद की अहमियत होती है।
+    </p>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-purple-400 to-pink-400 text-white text-center py-6 rounded-xl shadow-lg">
+    <div style="text-align:center; margin:30px 0;">
+  <h2 style="font-size: 28px; font-weight: bold; color: #ff5722; font-family: 'Segoe UI', sans-serif;">
+    ✨ Never quit, greatness takes time. ✨
+  </h2>
+</div>
+    <p class="text-lg">✨ Developed with ❤️ by Ritesh Kumar ✨</p>
+    
+
+
+    <p class="text-sm">© 2025 Bacchon Ki Duniya | सीखो, खेलो और आगे बढ़ो 🚀</p>
+  </footer>
+
+<script>
+// Maths
+function calculate(){
+  const n1=parseFloat(document.getElementById("num1").value);
+  const n2=parseFloat(document.getElementById("num2").value);
+  if(isNaN(n1)||isNaN(n2)) return;
+  document.getElementById("mathResult").innerText=
+    `➕ ${n1+n2} ➖ ${n1-n2} ✖️ ${n1*n2} ➗ ${n2!==0?(n1/n2).toFixed(2):"∞"} 📊 Average: ${(n1+n2)/2}`;
+}
+
+// Ginti
+function showGinti(){
+  const limit=parseInt(document.getElementById("gintiLimit").value)||100;
+  let out="";
+  for(let i=1;i<=limit;i++) out+=`<div>${i}</div>`;
+  document.getElementById("gintiOutput").innerHTML=out;
+}
+
+// Table
+function showTable(){
+  const num=parseInt(document.getElementById("tableOf").value);
+  if(isNaN(num)) return;
+  let result="";
+  for(let i=1;i<=10;i++) result+=`${num} × ${i} = ${num*i}<br>`;
+  document.getElementById("tableOutput").innerHTML=result;
+}
+
+// English letters A-Z with images
+const englishMap={
+  A:{word:"Apple",img:"https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg"},
+  B:{word:"Ball",img:"https://upload.wikimedia.org/wikipedia/commons/9/9d/Football_%28soccer_ball%29.svg"},
+  C:{word:"Cat",img:"https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"},
+  D:{word:"Dog",img:"https://upload.wikimedia.org/wikipedia/commons/2/26/YellowLabradorLooking_new.jpg"},
+  E:{word:"Elephant",img:"https://upload.wikimedia.org/wikipedia/commons/3/37/African_Bush_Elephant.jpg"},
+  F:{word:"Fish",img:"https://upload.wikimedia.org/wikipedia/commons/1/17/Tropical_fish_in_Aqaba.jpg"},
+  G:{word:"Grapes",img:"https://upload.wikimedia.org/wikipedia/commons/0/09/Table_grapes_on_white.jpg"},
+  H:{word:"Hat",img:"https://upload.wikimedia.org/wikipedia/commons/0/0e/Horse_in_field.jpg"},
+  I:{word:"Ice Cream",img:"https://upload.wikimedia.org/wikipedia/commons/b/bb/Strawberry_ice_cream_cone_%28cropped%29.jpg"},
+  J:{word:"Joker",img:"https://upload.wikimedia.org/wikipedia/commons/5/53/Jug.jpg"},
+  K:{word:"Kite",img:"https://upload.wikimedia.org/wikipedia/commons/d/dc/Kite_flying_in_blue_sky.jpg"},
+  L:{word:"Lion",img:"https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg"},
+  M:{word:"Mango",img:"https://upload.wikimedia.org/wikipedia/commons/9/90/Hapus_Mango.jpg"},
+  N:{word:"Nest",img:"https://upload.wikimedia.org/wikipedia/commons/3/32/Bird_nest_with_eggs.jpg"},
+  O:{word:"Orange",img:"https://upload.wikimedia.org/wikipedia/commons/c/c4/Orange-Fruit-Pieces.jpg"},
+  P:{word:"Parrot",img:"https://upload.wikimedia.org/wikipedia/commons/3/32/African_Grey_Parrot.jpg"},
+  Q:{word:"Queen",img:"https://upload.wikimedia.org/wikipedia/commons/3/32/Queen_Elizabeth_II.jpg"},
+  R:{word:"Rabbit",img:"https://upload.wikimedia.org/wikipedia/commons/8/85/Oryctolagus_cuniculus1.jpg"},
+  S:{word:"Sun",img:"https://upload.wikimedia.org/wikipedia/commons/c/c3/Sun_in_February.jpg"},
+  T:{word:"Tiger",img:"https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg"},
+  U:{word:"Umbrella",img:"https://upload.wikimedia.org/wikipedia/commons/0/0b/Umbrella-Open.jpg"},
+  V:{word:"Violin",img:"https://upload.wikimedia.org/wikipedia/commons/d/d6/Violin_VL100.jpg"},
+  W:{word:"Watch",img:"https://upload.wikimedia.org/wikipedia/commons/1/1a/Analog_watch.jpg"},
+  X:{word:"Xylophone",img:"https://upload.wikimedia.org/wikipedia/commons/e/ea/Xylophone.jpg"},
+  Y:{word:"Yak",img:"https://upload.wikimedia.org/wikipedia/commons/4/43/Yak_in_the_Mountains.jpg"},
+  Z:{word:"Zebra",img:"https://upload.wikimedia.org/wikipedia/commons/0/0f/Plains_Zebra_Equus_quagga.jpg"}
+};
+
+// Hindi letters अ–ज्ञ (emoji + word)
+const hindiMap=[
+  {letter:"अ",word:"अनार",emoji:"🍎"},{letter:"आ",word:"आम",emoji:"🥭"},{letter:"इ",word:"इमली",emoji:"🌰"},
+  {letter:"ई",word:"ईख",emoji:"🌾"},{letter:"उ",word:"उल्लू",emoji:"🦉"},{letter:"ऊ",word:"ऊन",emoji:"🧶"},
+  {letter:"ए",word:"एड़ी",emoji:"👣"},{letter:"ऐ",word:"ऐनक",emoji:"👓"},{letter:"ओ",word:"ओखली",emoji:"🥣"},
+  {letter:"औ",word:"औरत",emoji:"👩"},{letter:"क",word:"कबूतर",emoji:"🕊️"},{letter:"ख",word:"खरगोश",emoji:"🐇"},
+  {letter:"ग",word:"गाय",emoji:"🐄"},{letter:"घ",word:"घोड़ा",emoji:"🐎"},{letter:"ङ",word:"ङूरा",emoji:"🪶"},
+  {letter:"च",word:"चमगादड़",emoji:"🦇"},{letter:"छ",word:"छाता",emoji:"☂️"},{letter:"ज",word:"जिराफ",emoji:"🦒"},
+  {letter:"झ",word:"झरना",emoji:"⛲"},{letter:"ञ",word:"ञान",emoji:"📚"},{letter:"ट",word:"टमाटर",emoji:"🍅"},
+  {letter:"ठ",word:"ठंडा पानी",emoji:"🥶"},{letter:"ड",word:"डमरू",emoji:"🥁"},{letter:"ढ",word:"ढोल",emoji:"🥁"},
+  {letter:"ण",word:"णाद",emoji:"🔔"},{letter:"त",word:"तितली",emoji:"🦋"},{letter:"थ",word:"थाली",emoji:"🍽️"},
+  {letter:"द",word:"दरवाजा",emoji:"🚪"},{letter:"ध",word:"धनुष",emoji:"🏹"},{letter:"न",word:"नाव",emoji:"🚣‍♂️"},
+  {letter:"प",word:"पंखा",emoji:"🪁"},{letter:"फ",word:"फल",emoji:"🍉"},{letter:"ब",word:"बैल",emoji:"🐂"},
+  {letter:"भ",word:"भालू",emoji:"🐻"},{letter:"म",word:"मछली",emoji:"🐟"},{letter:"य",word:"यात्रा",emoji:"🛫"},
+  {letter:"र",word:"रात",emoji:"🌙"},{letter:"ल",word:"लाल",emoji:"🔴"},{letter:"व",word:"वायुमंडल",emoji:"🌤️"},
+  {letter:"श",word:"शेर",emoji:"🦁"},{letter:"ष",word:"षट्कोण",emoji:"🔷"},{letter:"स",word:"सूरज",emoji:"☀️"},
+  {letter:"ह",word:"हाथी",emoji:"🐘"},{letter:"क्ष",word:"क्षत्रिय",emoji:"⚔️"},{letter:"त्र",word:"त्रिशूल",emoji:"🔱"},
+  {letter:"ज्ञ",word:"ज्ञान",emoji:"📖"}
+];
+
+function showCharacters(){
+  const from=document.getElementById("rangeFrom").value.trim();
+  const to=document.getElementById("rangeTo").value.trim();
+  let result="";
+
+  const isEnglish=/^[A-Z]$/i.test(from) && /^[A-Z]$/i.test(to);
+  if(isEnglish){
+    const eng="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const a=eng.indexOf(from.toUpperCase());
+    const b=eng.indexOf(to.toUpperCase());
+    for(let i=a;i<=b;i++){
+      const letter=eng[i];
+      const {word,img}=englishMap[letter];
+      result+=`<div class="card flex flex-col items-center p-3 bg-pink-50 rounded-lg shadow cursor-pointer" onclick="speak('${letter}','${word}')">
+        <img src="${img}" class="w-24 h-24 object-contain mb-2">
+        <span class="text-lg font-bold">${letter}</span>
+        <span class="text-sm text-gray-600">${word}</span>
+      </div>`;
+    }
+  } else {
+    const fromIndex=hindiMap.findIndex(o=>o.letter===from);
+    const toIndex=hindiMap.findIndex(o=>o.letter===to);
+    if(fromIndex===-1 || toIndex===-1 || fromIndex>toIndex){
+      document.getElementById("charOutput").innerText="❌ कृपया सही अक्षर दें (जैसे अ से ज्ञ)";
+      return;
+    }
+    for(let i=fromIndex;i<=toIndex;i++){
+      const {letter,word,emoji}=hindiMap[i];
+      result+=`<div class="card flex flex-col items-center p-3 bg-yellow-50 rounded-lg shadow cursor-pointer" onclick="speakHindi('${letter}','${word}')">
+        <span class="text-4xl">${emoji}</span>
+        <span class="text-lg font-bold">${letter}</span>
+        <span class="text-sm text-gray-600">${word}</span>
+      </div>`;
+    }
+  }
+  document.getElementById("charOutput").innerHTML=result;
+}
+
+function speak(letter,word){
+  const msg=new SpeechSynthesisUtterance(`${letter} for ${word}`);
+  speechSynthesis.cancel();
+  speechSynthesis.speak(msg);
+}
+
+function speakHindi(letter,word){
+  const msg=new SpeechSynthesisUtterance(`${letter} से ${word}`);
+  msg.lang="hi-IN";
+  speechSynthesis.cancel();
+  speechSynthesis.speak(msg);
+}
+</script>
+
+</body>
+</html>
